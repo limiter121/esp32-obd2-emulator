@@ -1,0 +1,15 @@
+menu "ESP32 FATFS Configuration"
+
+config FATFS_BASE_ADDR
+    hex "FATFS Base address"
+    range 100000 1FFE000
+    default 110000
+    help
+	Starting address of the FATFS area in ESP32 Flash
+
+config FATFS_SIZE
+    int "FATFS Size in bytes"
+    range 262144 2097152
+    default 1048576
+
+endmenu

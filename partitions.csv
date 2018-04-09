@@ -1,0 +1,18 @@
+# Name,   Type, SubType, Offset,  Size, Flags
+# Note: if you change the phy_init or app partition offset, make sure to change the offset in Kconfig.projbuild
+nvs,      data, nvs,     0x9000,  0x6000,
+phy_init, data, phy,     0xf000,  0x1000,
+factory,  app,  factory, 0x10000, 0x100000,
+storage,  data, fat,     0x110000, 0x100000,
+
+#in case of some changes make the same changes in menuconfig
+#config parameters is described in main/Kconfig.projbuild
+
+# offet for type 0 must be aligned to 0x10000 (64K), must be ended with 0000
+# 1728K = 0x1B0000
+# 256K = 0x40000
+# 1M = 0x100000
+# 2M = 0x200000
+# Partition 'sstorage' is created for this example, set the same parameters in menuconfig->'ESP32 FATFS Configuration':
+#   FATFS Base address (in hex): 110000 (without 0x at the beginning!)
+#   FATFS size in bytes: 1048576
